@@ -3,7 +3,7 @@ int yellowPin = 10;
 int greenPin = 11;
 int buttonPin = 8;
 
-bool pedestrianRequest = false;
+int pedestrianRequest = 0;
 
 void setup()
 {
@@ -25,7 +25,7 @@ void loop()
   {
     if (digitalRead(buttonPin) == LOW)
     {
-      pedestrianRequest = true;
+      pedestrianRequest = 1;
       break;
     }
     delay(50);
@@ -38,10 +38,10 @@ void loop()
   digitalWrite(yellowPin, LOW);
 
   digitalWrite(redPin, HIGH);
-  if (pedestrianRequest)
+  if (pedestrianRequest == 1)
   {
     delay(3000);
-    pedestrianRequest = false;
+    pedestrianRequest = 0;
   }
   else
   {
